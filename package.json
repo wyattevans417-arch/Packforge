@@ -1,0 +1,23 @@
+{
+  "name": "packforge",
+  "version": "1.0.0",
+  "description": "PackForge - Interactive Astronomy Application",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wyattevans417-arch/Packforge.git"
+  },
+  "keywords": ["astronomy", "interactive", "education"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wyattevans417-arch/Packforge/issues"
+  },
+  "homepage": "https://github.com/wyattevans417-arch/Packforge#readme",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
