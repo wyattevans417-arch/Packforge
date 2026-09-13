@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId}/saveMeta/{saveId} {
+      allow read: if request.auth != null && request.auth.uid == userId && saveId == 'main';
+      allow create, update: if request.auth != null && request.auth.uid == userId && saveId == 'main'
+        && request.resource.data.keys().hasOnly(['schemaVersion','revision','updatedAtMs','clientId','displayName','payloadHash'])
+        && request.resource.data.schemaVersion is int && request.resource.data.revision is int
+        && request.resource.data.updatedAtMs is int && request.resource.data.clientId is string
+        && request.resource.data.displayName is string && request.resource.data.displayName.size() <= 32
+        && request.resource.data.payloadHash is string;
+      allow delete: if false;
+    }
+    match /users/{userId}/saves/{saveId} {
+      allow read: if request.auth != null && request.auth.uid == userId && saveId == 'main';
+      allow create, update: if request.auth != null && request.auth.uid == userId && saveId == 'main'
+        && request.resource.data.keys().hasOnly(['schemaVersion','revision','updatedAtMs','clientId','payloadHash','encoding','payload'])
+        && request.resource.data.schemaVersion is int && request.resource.data.revision is int
+        && request.resource.data.updatedAtMs is int && request.resource.data.clientId is string
+        && request.resource.data.payloadHash is string && request.resource.data.encoding is string
+        && request.resource.data.payload is string && request.resource.data.payload.size() < 900000;
+      allow delete: if false;
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

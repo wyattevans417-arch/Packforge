@@ -1,121 +1,34 @@
-PackForge
+# PackForge — Original Gameplay + Optional Google Cloud Save
 
-PackForge is a single-player card collecting game built around opening packs, collecting rare cards, grading them, leveling duplicates, completing campaigns, and chasing extremely rare collector events.
+This project is rebuilt from the exact v2.11 pre-progression PackForge source.
 
-Core Features
-Click to earn in-game cash
-Buy and open card packs
-Collect cards across multiple rarities
-Hunt special variants including Holo, Foil, Gold, Negative, Prismatic, and Serialized cards
-Grade cards and discover rare grading outcomes
-Combine duplicate cards to level them up
-Sell cards for in-game money
-Run free campaigns using your collection
-Play casino games including:
-Coin Flip
-Mines
-Plinko
-Blackjack
-Roulette
-Redeem hidden one-time codes for unique rewards
-Fully guided tutorial for new players
-Rare Collector Details
+## What is intentionally NOT in this build
+- No Collector Level system
+- No Master Collector
+- No progression locks/unlocks
+- No new Showcase navigation
+- No Lucky Room rename (the existing section remains Casino)
+- No leaderboards
 
-PackForge includes many hidden and extremely rare events designed to make collecting feel unpredictable and rewarding.
+## What changed technically
+- Original CSS/JS externalized without intentionally redesigning gameplay.
+- Vercel Analytics runtime removed.
+- PWA manifest/service worker added for static local caching.
+- Optional Google sign-in + Firestore cloud save added inside Settings -> Save.
+- The existing local key `packforge_save_v1` remains the source of truth for local play.
 
-Examples include:
+See docs/FIREBASE_SETUP.md for the only Firebase setup required.
 
-God Packs
-Hot Boxes
-Factory error cards
-Misprints and miscuts
-Rare Holo patterns
-Special serial numbers
-4-card and 6-card pack anomalies
-Cards stuck together during pack opening
-Pack-opening damage that can affect grading
-Black Label / Perfect grades
-Hidden Ghost cards
-Rare near-miss effects
-Unique grader notes
 
-Many of these systems are intentionally subtle and are meant to be discovered naturally while playing.
+## Firebase status
+Firebase Web App config for `packforge-7b432` is installed. Google Auth and Firestore still need to be enabled in Firebase Console, and the final Vercel/custom domain must be added to Authentication Authorized Domains.
 
-Card Variants
+## Performance pass
+- Combo countdown now updates on demand only while a combo exists instead of running a permanent 40 Hz interval.
+- FPS measurement loop only runs while the FPS counter is enabled.
+- Hidden tabs pause decorative CSS animation and skip nonessential status polling.
+- Grading/campaign/achievement UI polling frequencies were reduced without changing their absolute timers or rewards.
+- Static CSS/JS URLs are versioned so Vercel can keep long immutable browser caching without stale-code problems.
+- The existing automatic FPS performance guard remains enabled for weak devices.
 
-Cards can appear as special variants that affect appearance, rarity, and value.
-
-Some variants include:
-
-Holo
-Foil
-Gold
-Negative
-Prismatic
-Serialized
-
-Serialized cards are especially rare, and certain serial numbers can be more valuable than others.
-
-Campaigns
-
-Campaigns are free to enter.
-
-Players build a team of cards based on Power requirements and send them on timed campaigns for rewards.
-
-Card Leveling
-
-Duplicate cards can be combined to create higher-level versions.
-
-Higher-level cards remain separate from lower-level copies, allowing players to keep multiple levels of the same card in their collection.
-
-Tutorial
-
-PackForge includes a fully guided tutorial that teaches players how to:
-
-Earn money
-Buy packs
-Check pack odds
-Open packs
-Inspect cards
-Understand variants
-Start campaigns
-Use the casino
-Access Settings
-Redeem codes
-
-Tutorial progress is temporary and is wiped when the tutorial is finished so every player begins the real game from a clean save.
-
-Save System
-
-PackForge uses local browser storage.
-
-The save system is designed to remain compatible with older versions of the game so updates do not automatically wipe player progress.
-
-Hosting
-
-PackForge is designed to be extremely lightweight to host.
-
-The game runs almost entirely client-side and is built as a self-contained static HTML application.
-
-It does not require:
-
-A database
-Server-side game logic
-API routes
-Serverless functions
-External game assets
-Continuous network requests
-
-This makes it well suited for static hosting platforms such as Vercel or GitHub Pages.
-
-Tech
-HTML
-CSS
-Vanilla JavaScript
-LocalStorage
-No frameworks required
-Goal
-
-The goal of PackForge is to create a simple but deep collecting game where players always feel like something extremely rare could happen in the next pack.
-
-Open packs. Build your collection. Chase the impossible pulls.
+See `docs/GITHUB_VERCEL_UPLOAD.md` for deployment steps.
