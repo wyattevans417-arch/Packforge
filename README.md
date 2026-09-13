@@ -1,4 +1,4 @@
-# PackForge v3.5 — Campaign Rewards, Admin Lab & Jet Lumagui
+# PackForge v3.6 — Ghost / Jet / Odds Cleanup
 
 Local-only optimized PackForge build. No Firebase or account system.
 
@@ -45,3 +45,10 @@ Balance audit: premium pack prices were normalized after a Monte Carlo sell-valu
 - Added Jet Lumagui: exact 1 in 1,000 card-roll rarity, Power 1, fixed $420 sell value, dedicated smoky card treatment.
 - Admin Panel rebuilt as a tabbed Control Center with dashboard, economy, packs, cards, outcomes, Campaign/Event tools, diagnostics, and codes.
 - Lucky Coin and public reward-code routes no longer grant campaign-only specialty packs.
+
+
+## v3.6 notes
+- Potions removed from playable UI/reward paths.
+- Page-local Pack Odds button + Pack Chances tab.
+- Ghost/Jet card FX upgraded; Crue reveal no longer uses normal 3D flip.
+- Admin-only five-card rarity packs added.
