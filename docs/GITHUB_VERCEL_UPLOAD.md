@@ -1,22 +1,15 @@
-# Upload PackForge to GitHub + Vercel
+# GitHub + Vercel upload
 
-The files are split for maintainability, but the browser still sees one website. `index.html` is the entry page and loads the files in `css/`, `js/`, and `assets/` automatically.
-
-## GitHub web upload
-1. Unzip the PackForge ZIP on your computer.
-2. Open the **PackForge_v3_CloudOnly** folder.
-3. In your GitHub repository choose **Add file → Upload files**.
-4. Drag the **contents** of `PackForge_v3_CloudOnly` into the uploader: `index.html`, `css`, `js`, `assets`, `docs`, `manifest.json`, `service-worker.js`, `vercel.json`, and `firestore.rules`.
-5. Commit the upload. `index.html` should be at the repository root, not one folder deeper.
+## Replace the deployed project
+1. Unzip the PackForge local-only ZIP.
+2. Open your GitHub PackForge repository.
+3. Upload the **contents** of the ZIP to the repository root.
+4. `index.html` must sit directly at the root beside `manifest.json`, `service-worker.js`, and `vercel.json`.
+5. Keep the `css/`, `js/`, `assets/`, and `docs/` folders intact.
+6. Remove old Firebase-only files if they still exist in the repo: `firestore.rules`, `css/cloud-save.css`, `js/cloud-save.js`, `js/firebase-config.js`, and `docs/FIREBASE_SETUP.md`.
+7. Commit the changes. If Vercel is connected to the repository it should redeploy automatically.
 
 ## Vercel
-- Import the GitHub repository into Vercel.
-- Framework Preset: **Other**.
-- Root Directory: repository root (`./`).
-- No build command is required.
-- No output directory is required; this is a static site.
-- Deploy.
+This is a static vanilla site. No build command or server function is required.
 
-Then add the deployed Vercel domain in Firebase Authentication → Settings → Authorized domains.
-
-Do not combine the split files back into one HTML file. Keeping them split allows browsers and the service worker to cache unchanged JS/CSS between updates, reducing repeat downloads and making maintenance safer.
+The player opens the single site URL; `index.html` automatically loads the split CSS/JS files.

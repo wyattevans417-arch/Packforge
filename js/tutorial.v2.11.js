@@ -219,7 +219,7 @@ function firstEnabledShopBuy(){
   for(const b of btns)if(!b.disabled)return b;
   return btns[0]||null;
 }
-function firstShopInfoBtn(){return document.querySelector('#shopGrid [data-shop-odds]')}
+function firstShopInfoBtn(){return document.querySelector('#pfShopOddsButton')}
 function oddsOpen(){const m=$('#oddsModal');return !!m&&!m.classList.contains('hidden')}
 function casinoTab(name){return document.querySelector(`[data-mcc-tab="${name}"]`)}
 function casinoGameVisible(name){const el=$(`#mcc-${name}`);return !!el&&!el.classList.contains('hidden')}
@@ -261,8 +261,8 @@ const STEPS=[
   {id:'welcome',getTarget:()=>$('#clickOrb'),sideText:true,blockTargetAlways:true,autoAdvanceAfterTyping:1000,text:"Welcome to PackForge. This game took a lot of time, testing, trial and error, and care to make. Thank you for giving it a try. Here's a quick tour to show you how everything works."},
   {id:'click',getTarget:()=>$('#clickOrb'),text:"This is your main money button. Click it 100 times to earn enough cash for your first pack. The counter below will track your progress.",withCounter:true,onEnter:()=>{window.__pfTutorialLockClick=true;clickCount=0;updateCounter()},onExit:()=>{window.__pfTutorialLockClick=false},isComplete:()=>clickCount>=100},
   {id:'shopNav',getTarget:()=>document.querySelector('.side-btn[data-view="shop"]'),text:"Great — you have enough cash for your first pack. Click Shop in the menu to open the pack shop.",isComplete:()=>viewVisible('view-shop')},
-  {id:'shopInfo',getTarget:()=>firstShopInfoBtn(),text:'Before you buy anything, click the highlighted ? button. PackForge lets you inspect the exact rarity and variant odds for a pack before you spend money on it.',isComplete:()=>oddsOpen()},
-  {id:'shopInfoExplain',getTarget:()=>$('#oddsModal .odds-modal')||$('#oddsModal'),sideText:true,text:'This is the Pack Odds screen. It shows the rarity chances, variant chances, and any special-pack mutation odds. Manual opening uses the full listed odds; Auto Open has reduced chances for rare cards and variants. Look it over, then click × to close it.',isComplete:()=>!oddsOpen()},
+  {id:'shopInfo',getTarget:()=>firstShopInfoBtn(),text:'Before you buy anything, click the highlighted ? button. PackForge keeps every card, variant, Special Pack, Semi-God, and God Pack chance in one reference before you spend money.',isComplete:()=>oddsOpen()},
+  {id:'shopInfoExplain',getTarget:()=>$('#oddsModal .odds-modal')||$('#oddsModal'),sideText:true,text:'This is the Pack Odds & Pull Chances browser. It has tabs for every individual card, variants, Special Packs, Semi-God Packs, and God Packs. Manual opening uses the full listed odds; Auto Open has reduced chances for rare cards and variants. Look it over, then click × to close it.',isComplete:()=>!oddsOpen()},
   {id:'buyPack',getTarget:()=>firstEnabledShopBuy(),text:'Now click Buy Pack to purchase your first pack. The pack itself will be sent to your Bag.',isComplete:()=>tutFlags.packBought},
   {id:'bagNav',getTarget:()=>document.querySelector('.side-btn[data-view="collection"]'),text:'Purchased packs are stored in your Bag. Click Bag to see what you own.',isComplete:()=>viewVisible('view-collection'),onAdvance:()=>{const b=document.querySelector('[data-bag-tab="packs"]');if(b)b.click()}},
   {id:'openPack',getTarget:()=>firstOpenPackBtn(),text:'This is where your packs are stored. Click Open Pack to open your first pack.',directOpen:true,isComplete:()=>elExists('#bigPack')},
