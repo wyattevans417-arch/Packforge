@@ -12,3 +12,8 @@ Local-only optimized Vercel/GitHub build. Existing `packforge_save_v1` saves rem
 - Performance fallbacks freeze ambient v3.8 effects on weak-device modes.
 
 Deploy the contents of this folder at the repository root (`index.html` at root).
+
+## Input hotfix
+- Rolled back to the v3.8 gameplay/UI baseline.
+- Enter/Numpad Enter no longer activate the Coin when it has keyboard focus.
+- Spacebar, mouse, and touch Coin controls are unchanged.

@@ -901,6 +901,12 @@
   });
   const pfOrb=$('#clickOrb');
   if(pfOrb){
+    // Enter is intentionally NOT a Coin control. Native focused-button activation can
+    // auto-repeat extremely quickly when Enter is held, so suppress that default
+    // behavior on both keydown and keyup. Spacebar/mouse/touch behavior is unchanged.
+    const blockCoinEnter=e=>{if(e.key==='Enter'||e.code==='Enter'||e.code==='NumpadEnter'){e.preventDefault();e.stopImmediatePropagation()}};
+    pfOrb.addEventListener('keydown',blockCoinEnter,true);
+    pfOrb.addEventListener('keyup',blockCoinEnter,true);
     pfOrb.addEventListener('pointermove',e=>{const r=pfOrb.getBoundingClientRect(),x=Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100)),y=Math.max(0,Math.min(100,(e.clientY-r.top)/r.height*100));pfOrb.style.setProperty('--mx',x.toFixed(1)+'%');pfOrb.style.setProperty('--my',y.toFixed(1)+'%')},{passive:true});
     pfOrb.addEventListener('pointerleave',()=>{pfOrb.style.setProperty('--mx','38%');pfOrb.style.setProperty('--my','30%')},{passive:true});
   }
