@@ -1,4 +1,11 @@
-# PackForge v3.2 — Odds & God Pack Update
+# PackForge v3.3 — Presentation & UI Update
+
+Local-only optimized PackForge build. No Firebase or account system.
+
+Highlights: centralized odds browser polish (40 cards/page, visual pack/variant previews), sidebar Admin Panel after unlock, improved two-card grading presentation, 25 bonus achievements with categories, Chances sub-tabs, Coin-page-only Lucky Coin, fullscreen-only Inspect control, campaign UI cleanup, and rebuilt Secret/Ghost/Crue cinematics.
+
+The normal local save key remains `packforge_save_v1`.
+
 
 Local-only optimized PackForge build. Normal gameplay remains fully browser-side and uses the stable `packforge_save_v1` save key.
 
