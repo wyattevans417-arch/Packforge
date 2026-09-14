@@ -1,19 +1,21 @@
-# PackForge v3.8 — Collector Events
+# PackForge v3.10 — Cleanup & Card Polish
 
-Local-only optimized Vercel/GitHub build. Existing `packforge_save_v1` saves remain compatible.
+This build keeps PackForge local-first and save-compatible while removing the old live-event framework and simplifying several interfaces.
 
-## v3.8
-- Collector Auction live event: three sealed lots, local NPC bidding, automatic refunds/delivery.
-- Collector's Eclipse ultra-rare live event with a short variant-luck / pack-quality boost.
-- Shattered variant (1 in 2,000 base pack variant roll) with fractured-glass light flow.
-- Master Packs: completed-set Campaign reward; all five cards Holo+ with one premium finish.
-- Ultra card art redesigned as dark electric magenta/blue rather than rainbow/Prismatic.
-- Admin Panel now has a dedicated Events tab with exact force controls and Master Pack testing.
-- Performance fallbacks freeze ambient v3.8 effects on weak-device modes.
+## Main changes
+- All live events removed. The rare 50,000-Power campaign is a normal Campaign offer, not an event system.
+- Coin keeps its reactor/shockwave/crit feedback but loses the orbiting sparks and cursor-follow highlight.
+- Settings reduced to Audio, Video, Codes, Reset, and Admin. Reset requires three confirmations.
+- Casino Coin Flip supports Heads/Tails selection with a two-sided H/T coin and stronger result feedback. Other casino games show floating net win/loss amounts.
+- Ghost / The Unlisted Print receives a much stronger animated card treatment; Ghost Power always equals its actual sell value.
+- Negative and Glitched variants retired. Gold and Shattered receive upgraded visual treatments. Golden Wave mutation removed.
+- Serialized cards show only the serial number under Amount.
+- High-end card sales require confirmation.
+- A rare 50,000-Power Campaign offer can replace the hard Campaign slot and pays premium rewards.
+- God/Semi-God wrapper badge is suppressed while the ripped wrapper disappears.
 
-Deploy the contents of this folder at the repository root (`index.html` at root).
+## Save compatibility
+PackForge continues using `packforge_save_v1`. Retired Negative, Glitched, and Golden Wave copies are migrated forward rather than deleted.
 
-## Input hotfix
-- Rolled back to the v3.8 gameplay/UI baseline.
-- Enter/Numpad Enter no longer activate the Coin when it has keyboard focus.
-- Spacebar, mouse, and touch Coin controls are unchanged.
+## Deployment
+Upload the contents of this folder to the repository root so `index.html` sits at `/index.html`. Vercel can serve the project directly with no build command.
