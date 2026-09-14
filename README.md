@@ -1,21 +1,22 @@
-# PackForge v3.10 — Cleanup & Card Polish
+# PackForge v3.11 — Mines Fix + Low-Edge Vercel Build
 
-This build keeps PackForge local-first and save-compatible while removing the old live-event framework and simplifying several interfaces.
+This build keeps the existing `packforge_save_v1` browser save and fixes the Casino Mines game while reducing repeat Vercel requests as aggressively as practical for a static deployment.
 
-## Main changes
-- All live events removed. The rare 50,000-Power campaign is a normal Campaign offer, not an event system.
-- Coin keeps its reactor/shockwave/crit feedback but loses the orbiting sparks and cursor-follow highlight.
-- Settings reduced to Audio, Video, Codes, Reset, and Admin. Reset requires three confirmations.
-- Casino Coin Flip supports Heads/Tails selection with a two-sided H/T coin and stronger result feedback. Other casino games show floating net win/loss amounts.
-- Ghost / The Unlisted Print receives a much stronger animated card treatment; Ghost Power always equals its actual sell value.
-- Negative and Glitched variants retired. Gold and Shattered receive upgraded visual treatments. Golden Wave mutation removed.
-- Serialized cards show only the serial number under Amount.
-- High-end card sales require confirmation.
-- A rare 50,000-Power Campaign offer can replace the hard Campaign slot and pays premium rewards.
-- God/Semi-God wrapper badge is suppressed while the ripped wrapper disappears.
+## Fixed
+- Casino Mines round state is now declared correctly instead of throwing a JavaScript `ReferenceError` on Start.
+- Mines builds all 25 tiles, resolves safe/mine picks, updates the exact multiplier/potential payout, supports Cash Out, and automatically pays when every safe tile is found.
+- The Mines board is visible in an idle state before a round starts and uses real buttons for more reliable input handling.
+
+## Vercel / request optimization
+- `index.html` is self-contained: all game CSS and JavaScript are inlined into the page.
+- No external stylesheet, game-script, analytics, or manifest request is needed for normal play.
+- The only required runtime companion is `service-worker.js`.
+- The service worker uses cache-first navigation. Once its shell cache is installed, it does not perform the old background `fetch()` on every page navigation.
+- The service worker URL is versioned (`v=3.11.0`). Existing installs do at most one explicit service-worker update check per browser tab/session, instead of a network check on every reload.
+- `vercel.json` keeps the service-worker script and first-load `index.html` revalidatable so a new deployment can be discovered without bringing back per-navigation refresh traffic.
 
 ## Save compatibility
-PackForge continues using `packforge_save_v1`. Retired Negative, Glitched, and Golden Wave copies are migrated forward rather than deleted.
+PackForge still uses `packforge_save_v1`. This update does not intentionally reset player data.
 
 ## Deployment
-Upload the contents of this folder to the repository root so `index.html` sits at `/index.html`. Vercel can serve the project directly with no build command.
+Upload the contents of this folder to the repository root. `index.html`, `service-worker.js`, and `vercel.json` should sit at the root. No build command, serverless function, database, or API route is required.

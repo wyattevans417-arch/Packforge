@@ -1,15 +1,13 @@
-# GitHub + Vercel upload
+# GitHub + Vercel upload — v3.11
 
 ## Replace the deployed project
-1. Unzip the PackForge local-only ZIP.
-2. Open your GitHub PackForge repository.
+1. Unzip the PackForge v3.11 ZIP.
+2. Open the GitHub repository connected to Vercel.
 3. Upload the **contents** of the ZIP to the repository root.
-4. `index.html` must sit directly at the root beside `manifest.json`, `service-worker.js`, and `vercel.json`.
-5. Keep the `css/`, `js/`, `assets/`, and `docs/` folders intact.
-6. Remove old Firebase-only files if they still exist in the repo: `firestore.rules`, `css/cloud-save.css`, `js/cloud-save.js`, `js/firebase-config.js`, and `docs/FIREBASE_SETUP.md`.
-7. Commit the changes. If Vercel is connected to the repository it should redeploy automatically.
+4. Make sure `index.html`, `service-worker.js`, and `vercel.json` sit directly at the repository root.
+5. Commit the changes. Vercel can deploy this as a plain static site with no build command.
 
-## Vercel
-This is a static vanilla site. No build command or server function is required.
+## Low-request layout
+`index.html` already contains the live CSS and JavaScript. The `css/` and `js/` folders are retained only as editable source copies for future updates; the deployed page does not request them during normal play.
 
-The player opens the single site URL; `index.html` automatically loads the split CSS/JS files.
+The service worker caches the self-contained page and serves later navigations cache-first. A new release should bump both the service-worker registration query version and the cache name so players receive the new build without returning to the old per-navigation network-refresh behavior.
