@@ -1,6 +1,6 @@
-/* PackForge v3.15 — Ascendant Expansion + ultra-low-request static shell.
+/* PackForge v3.16 — Ascendant Expansion + ultra-low-request static shell.
    The page is self-contained. After install, normal navigations are served from Cache Storage. */
-const CACHE='packforge-shell-v3-15-unique-names-fx';
+const CACHE='packforge-shell-v3-16-admin-blackhole';
 const SHELL='./index.html';
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.add(SHELL)).then(()=>self.skipWaiting()));
