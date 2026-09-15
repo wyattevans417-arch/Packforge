@@ -1,6 +1,6 @@
-/* PackForge v3.13 — Ascendant Expansion + ultra-low-request static shell.
+/* PackForge v3.14 — Ascendant Expansion + ultra-low-request static shell.
    The page is self-contained. After install, normal navigations are served from Cache Storage. */
-const CACHE='packforge-shell-v3-13-ascendant';
+const CACHE='packforge-shell-v3-14-clean-ui';
 const SHELL='./index.html';
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.add(SHELL)).then(()=>self.skipWaiting()));
