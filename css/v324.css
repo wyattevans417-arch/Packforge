@@ -1,0 +1,6 @@
+/* PackForge v3.24 — Slots button-only patch. No lever/arm UI. */
+
+.pf-slot-layout{grid-template-columns:minmax(0,1fr) minmax(220px,.34fr)!important;gap:16px!important;align-items:start!important}
+.pf324-slot-spin{align-self:center!important;justify-self:stretch!important;grid-column:1!important;min-height:54px!important;margin-top:-2px!important;font-size:16px!important;font-weight:1000!important;letter-spacing:.13em!important;border-radius:14px!important;box-shadow:0 9px 24px rgba(0,0,0,.26),0 0 22px rgba(89,214,161,.10)!important}
+.pf-slot-cabinet{grid-column:1!important}.pf-slot-side{grid-column:2!important;grid-row:1 / span 2!important}
+@media(max-width:1020px){.pf-slot-layout{grid-template-columns:1fr!important}.pf-slot-cabinet,.pf324-slot-spin,.pf-slot-side{grid-column:1!important}.pf-slot-side{grid-row:auto!important}.pf324-slot-spin{width:min(520px,100%)!important;justify-self:center!important;margin-top:0!important}}

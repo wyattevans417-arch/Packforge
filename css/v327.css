@@ -1,0 +1,27 @@
+/* PackForge v3.27 — Campaign rank + destination-card cleanup. No idle animation loops. */
+#view-campaigns{position:relative}
+#view-campaigns .view-title{padding-right:160px}
+.pf327-rank-badge{position:absolute;right:18px;top:4px;width:132px;z-index:7;cursor:pointer;user-select:none;--rank-color:#78dfff;--rank-rgb:120,223,255}
+.pf327-rank-shield{position:relative;min-height:112px;padding:13px 10px 11px;display:grid;align-content:center;justify-items:center;text-align:center;clip-path:polygon(14% 0,86% 0,100% 18%,93% 78%,50% 100%,7% 78%,0 18%);background:linear-gradient(155deg,rgba(var(--rank-rgb),.24),rgba(8,13,21,.97) 48%,rgba(var(--rank-rgb),.09));border:1px solid rgba(var(--rank-rgb),.52);filter:drop-shadow(0 8px 16px rgba(0,0,0,.28))}
+.pf327-rank-shield:before{content:"";position:absolute;inset:5px;clip-path:inherit;border:1px solid rgba(var(--rank-rgb),.25);pointer-events:none}
+.pf327-rank-shield span{font-size:8px;letter-spacing:.2em;font-weight:1000;color:rgba(235,247,255,.72)}
+.pf327-rank-shield b{font-size:36px;line-height:.92;letter-spacing:-.05em;color:#fff;text-shadow:0 0 14px rgba(var(--rank-rgb),.38)}
+.pf327-rank-shield strong{font-size:9px;letter-spacing:.12em;color:var(--rank-color);max-width:108px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pf327-rank-track{height:5px;margin:5px 7px 0;border-radius:999px;background:#05090f;border:1px solid rgba(255,255,255,.07);overflow:hidden}.pf327-rank-track i{display:block;height:100%;border-radius:inherit;background:var(--rank-color);transition:width .18s}
+.pf327-rank-caption{display:block;margin-top:3px;text-align:center;font-size:7px;font-weight:900;color:#7f91a7;letter-spacing:.05em}
+.pf327-rank-panel{position:absolute;right:0;top:140px;width:292px;max-height:430px;overflow:auto;padding:12px;border-radius:14px;background:#080e17;border:1px solid rgba(var(--rank-rgb),.25);box-shadow:0 20px 55px rgba(0,0,0,.46);cursor:default}
+.pf327-rank-panel.hidden{display:none}.pf327-rank-panel h4{font-size:14px;margin:0 0 3px}.pf327-rank-panel>p{font-size:9px;color:#8394aa;line-height:1.45;margin:0 0 9px}.pf327-rank-list{display:grid;gap:4px}.pf327-rank-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:7px;padding:7px 8px;border-radius:8px;background:#0b131f;border:1px solid rgba(255,255,255,.045)}.pf327-rank-row.current{border-color:rgba(var(--rank-rgb),.34);background:rgba(var(--rank-rgb),.07)}.pf327-rank-row.passed{opacity:.62}.pf327-rank-row b{font-size:10px}.pf327-rank-row span{font-size:9px;color:#a9b7c8}.pf327-rank-row small{font-size:8px;color:#74869c;text-align:right}
+
+/* Cleaner offers: the three numbers matter first; detail becomes one compact line. */
+.pf326-offer{min-height:226px;gap:9px;padding:15px 15px 14px}
+.pf326-offer h3{font-size:18px;min-height:38px}
+.pf327-power-hero{display:flex;align-items:baseline;gap:7px;margin:1px 0 0}.pf327-power-hero small{font-size:8px;letter-spacing:.14em;color:#74869b;font-weight:1000}.pf327-power-hero b{font-size:27px;line-height:1;color:#f5f9ff;letter-spacing:-.035em}
+.pf327-offer-quick{display:grid;grid-template-columns:.72fr 1.28fr;gap:7px}.pf327-offer-quick>span{display:block;padding:9px 10px;border-radius:10px;background:#070d14;border:1px solid rgba(255,255,255,.05)}.pf327-offer-quick small{display:block;font-size:7px;letter-spacing:.12em;color:#617286;font-weight:900}.pf327-offer-quick b{display:block;margin-top:3px;font-size:12px;line-height:1.15;color:#eaf3ff}.pf327-offer-minor{font-size:9px;line-height:1.35;color:#8192a7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pf327-offer-minor strong{color:#9deeff;font-weight:900}
+.pf326-offer-cta{margin-top:auto}
+
+.pf327-stamps h3{margin-bottom:2px}.pf327-stamps p{max-width:340px}
+.pf327-rep-earned{color:#9deeff!important}
+
+@media(max-width:900px){#view-campaigns .view-title{padding-right:0}.pf327-rank-badge{position:relative;right:auto;top:auto;width:138px;margin:-5px 0 14px auto}.pf327-rank-panel{right:0;top:143px}.pf326-offer-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.pf327-rank-badge{margin-left:0}.pf327-rank-panel{position:fixed;left:12px;right:12px;top:110px;width:auto;max-height:65vh}.pf327-offer-quick{grid-template-columns:1fr}.pf327-offer-minor{white-space:normal}}
+@media(prefers-reduced-motion:reduce){.pf327-rank-track i{transition:none!important}}
