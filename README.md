@@ -1,10 +1,15 @@
-# PackForge v3.14 — Clean Shop / Admin / Codes
+# PackForge v3.15 — Unique Names + Chase Rarity FX
 
-- Keeps existing local `packforge_save_v1` progress. No deployment reset.
-- Local browser/device saving only; no Google/Firebase sync.
-- Shop pack cards are visually consistent; odds/value tags moved out of the cards and remain in the `?` odds browser.
-- Foundry/passive income is a muted utility panel beside the Coin on desktop.
-- Admin is reduced to **Give Stuff** and **Codes**, with direct specialty, rarity, God Pack, and Semi-God Pack grants.
-- Reward codes are pack-focused: one code for every specialty pack, separate codes for every God Pack / Semi-God type, plus God/Ascendant rarity packs.
-- Regular card names were simplified without changing card IDs, rarity, ownership, values, or saves.
-- Cache-first PWA / self-contained page behavior is retained for very low Vercel request usage.
+## What changed
+- Every one of the 10 permanent packs now has exactly 125 unique one-word card names.
+- Removed numbered filler names and generated adjective/suffix names from those sets.
+- God and Ascendant keep their existing odds and IDs, but now have dedicated animated card treatments.
+- Fixed Admin God/Ascendant test packs so they actually generate the real God/Ascendant chase cards instead of falling back to normal cards.
+- God manual pulls have a full gold/cosmic reveal cinematic.
+- Ascendant manual pulls have a longer dimensional/aurora reveal cinematic.
+- Existing local save IDs are preserved; this update does not reset players.
+- Effects are CSS/DOM only and require no external assets or extra Vercel requests.
+- Service worker cache bumped to v3.15.
+
+## Deployment
+Deploy `index.html`, `service-worker.js`, and `vercel.json` at the Vercel project root.
