@@ -1,6 +1,6 @@
-/* PackForge v3.11 — ultra-low-request static shell.
-   index.html is self-contained, so after the first successful install, normal navigations are served from Cache Storage without a background network refresh. */
-const CACHE='packforge-shell-v3-11-mines-lowedge';
+/* PackForge v3.13 — Ascendant Expansion + ultra-low-request static shell.
+   The page is self-contained. After install, normal navigations are served from Cache Storage. */
+const CACHE='packforge-shell-v3-13-ascendant';
 const SHELL='./index.html';
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.add(SHELL)).then(()=>self.skipWaiting()));
