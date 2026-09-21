@@ -1,33 +1,20 @@
-# PackForge v3.29 — Apology Pack Integrity
+# PackForge v3.72.1 — GitHub / Vercel Production Build
 
-Built from v3.28.
+This package is laid out like the older PackForge GitHub production ZIPs.
 
-## Player-facing changes
-- Wyatt Apology God Pack can now be claimed only once per normal save flow.
-- If the v3.28 triple-popup bug left multiple **unopened** Wyatt Apology God Packs, v3.29 keeps one and removes the accidental extras once.
-- Wyatt Apology God Pack lineup is fixed and identical for everyone:
-  1. Jet Lumagui
-  2. Mythic serialized **#001/025**
-  3. Wyatt Evans
-  4. Mythic
-  5. Common — **Holo + Serialized #001/001 + Grade 10 Perfect Black Label**
-- Holo cards with a serial number are now correctly recognized by the serialized-card systems.
-- Remaining visible 125-card Archive/Shop copy was updated to the current 250-card set size.
+## Upload
+1. Extract this ZIP on your computer.
+2. Open the extracted folder.
+3. Select **everything inside it**: `index.html`, `README.md`, `service-worker.js`, `vercel.json`, `css`, and `js`.
+4. Drag those items directly into the GitHub repository upload area.
+5. Commit the upload and allow Vercel to redeploy.
+6. On the first visit after deployment, hard-refresh once if an older service worker was previously installed.
 
-## Validation performed
-- Browser runtime: only one apology overlay appears on v3.29.
-- Double-click/repeated claim test: exactly one apology pack is granted.
-- Re-entering the game after claim: no apology overlay reappears.
-- Migration test: a save with 3 unopened apology packs is reduced to 1 once.
-- Bag test: updated Wyatt Apology God Pack renders and opens through the current pack-opening flow.
-- 10 permanent sets verified at 250 unique one-word cards each.
-- Every set verified at 15 Ultra / 10 Secret / 7 Ghost / 5 God / 3 Ascendant.
-- Pokémon Ascendants verified as Mew / Mewtwo / Arceus.
-- No runtime errors during the v3.29 browser smoke tests.
-- JavaScript syntax, static IDs, referenced assets, service-worker shell assets, Admin password digest, standalone dependencies, and ZIP integrity checked.
+## Structure
+- `index.html` — game page
+- `css/packforge.css` — all game styles
+- `js/packforge-core.js` — all game logic
+- `service-worker.js` — local shell caching; deletes older PackForge caches on activation
+- `vercel.json` — no-cache HTML/SW, long-lived versioned CSS/JS caching
 
-## Saves
-Uses the existing local `packforge_save_v1` save key. No Firebase/cloud saving is added.
-
-## Deploy
-Upload the ZIP contents to the Vercel project root. `index.html`, CSS, core JS, tutorial JS, service worker, and `vercel.json` are included.
+No third-party framework, CDN asset, gameplay API, WebSocket, or server heartbeat is added by this package. Gameplay remains local after the static files load.
