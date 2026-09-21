@@ -1,4 +1,0 @@
-/* PackForge v3.11 low-edge PWA bootstrap.
-   Normal page navigations are served by the cache-first SW. Existing installs perform at most one explicit SW update check per browser tab/session, keeping deploys discoverable without a request on every reload. */
-if('serviceWorker' in navigator){window.addEventListener('load',()=>{const swURL='./service-worker.js?v=3.11.0',flag='pf_sw_checked_v3_11';navigator.serviceWorker.getRegistration().then(reg=>{const target=new URL(swURL,location.href).href;if(!reg||reg.active?.scriptURL!==target)return navigator.serviceWorker.register(swURL,{updateViaCache:'none'});if(!sessionStorage.getItem(flag)){sessionStorage.setItem(flag,'1');return reg.update()}return reg}).catch(()=>{});},{once:true});}
-const pfVis=()=>document.documentElement.classList.toggle('pf-hidden-tab',document.hidden);document.addEventListener('visibilitychange',pfVis,{passive:true});pfVis();
