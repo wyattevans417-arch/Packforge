@@ -4547,6 +4547,7 @@ function renderCasino(){try{mccInitCasino()}catch(err){console.error('PackForge 
   const pfOldArena=state.arena||{},pfMigratedCards=Array.isArray(pfOldArena.deck)?pfOldArena.deck.slice(0,10):[];
   state.arena={decks:[],activeDeckId:null,pocketTutorialDone:false,placements:0,placementWins:0,rating:0,wins:0,losses:0,streak:0,bestStreak:0,claimedRanks:[],matchHistory:[],...(pfOldArena||{})};
   state.arena.tutorialDone=true; /* retires the v3.34 slideshow tutorial */
+  state.arena.pocketTutorialDone=true; /* Arena walkthrough removed by request. */
   if(!Array.isArray(state.arena.decks))state.arena.decks=[];
   if(!state.arena.decks.length&&pfMigratedCards.length){state.arena.decks.push({id:'deck_migrated',name:'Deck 1',cards:pfMigratedCards,moves:{...(pfOldArena.skills||{})},wins:0,losses:0,createdAt:Date.now()});state.arena.activeDeckId='deck_migrated'}
   state.arena.decks=state.arena.decks.map((d,i)=>({id:d.id||`deck_${i+1}`,name:d.name||`Deck ${i+1}`,cards:Array.isArray(d.cards)?d.cards.slice(0,10):[],moves:d.moves||{},wins:Number(d.wins||0),losses:Number(d.losses||0),createdAt:d.createdAt||Date.now()}));
