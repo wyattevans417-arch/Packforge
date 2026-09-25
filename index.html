@@ -15,7 +15,7 @@
 
 
 
-<link rel="stylesheet" href="./css/packforge.css?v=3.72.2"/>
+<link rel="stylesheet" href="./css/packforge.css?v=3.72.3"/>
 </head><body><div id="astroApp"><div class="starfield"></div><header class="astro-topbar"><div class="brand"><span class="brand-orbit physics-brand-mark"></span> QUANTA</div><nav class="astro-nav"><button class="nav-pill active" data-astro-page="home">Overview</button><button class="nav-pill" data-astro-page="solar">Quantum</button><button class="nav-pill" data-astro-page="stars">Relativity</button><button class="nav-pill" data-astro-page="deep">Fields</button><button class="nav-pill" data-astro-page="missions">Matter</button></nav><button aria-label="Settings" class="icon-btn" id="astroSettingsBtn">⚙</button></header><main class="astro-main physics-main">
 <section class="astro-page active" id="astro-page-home"><section class="astro-hero physics-hero"><div><div class="eyebrow">Interactive physics reference</div><h1>Physics, from quanta<br/>to spacetime.</h1><p>A compact, numbers-first tour of modern physics: quantum mechanics, relativity, fields, particles, and thermodynamics. Values are SI unless another unit is shown.</p><div class="hero-actions"><button class="primary-btn" data-astro-page="solar">Start with Quantum Mechanics</button><button class="secondary-btn" id="randomFactBtn">Random physics fact</button></div></div><div aria-label="Animated wave interference visualization" class="physics-stage"><div class="physics-grid-lines"></div><div class="wave wave-a"></div><div class="wave wave-b"></div><div class="particle-dot p1"></div><div class="particle-dot p2"></div><div class="particle-dot p3"></div><div class="physics-stage-label"><b>|ψ|²</b><small>probability density · conceptual visualization</small></div></div></section>
 <div class="astro-number-grid physics-number-grid"><article><b>299,792,458</b><span>m/s · speed of light in vacuum · exact</span></article><article><b>6.62607015×10⁻³⁴</b><span>J·s · Planck constant · exact</span></article><article><b>1.602176634×10⁻¹⁹</b><span>C · elementary charge · exact</span></article><article><b>1.380649×10⁻²³</b><span>J/K · Boltzmann constant · exact</span></article></div>
@@ -89,12 +89,12 @@
 
 
 
-<script src="./js/packforge-core.js?v=3.72.2"></script>
+<script src="./js/packforge-core.js?v=3.72.3"></script>
 
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js?v=3.72.2', {updateViaCache:'none'})
+    navigator.serviceWorker.register('./service-worker.js?v=3.72.3', {updateViaCache:'none'})
       .then(reg => reg.update())
       .catch(() => {});
   }, {once:true});

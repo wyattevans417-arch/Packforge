@@ -1,9 +1,9 @@
-/* PackForge v3.72.2 production cache shell. */
-const CACHE='packforge-shell-v3-72-2';
+/* PackForge v3.72.3 production cache shell. */
+const CACHE='packforge-shell-v3-72-3';
 const SHELL=[
   './index.html',
-  './css/packforge.css?v=3.72.2',
-  './js/packforge-core.js?v=3.72.2'
+  './css/packforge.css?v=3.72.3',
+  './js/packforge-core.js?v=3.72.3'
 ];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()));
