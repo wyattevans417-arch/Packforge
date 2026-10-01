@@ -1,20 +1,20 @@
-# PackForge v3.72.1 — GitHub / Vercel Production Build
+# PackForge v4.0.1 — Arena Season 2 + Admin Core
 
-This package is laid out like the older PackForge GitHub production ZIPs.
+GitHub/Vercel production drop-in build using the same layout as the earlier PackForge production ZIPs.
 
 ## Upload
-1. Extract this ZIP on your computer.
-2. Open the extracted folder.
-3. Select **everything inside it**: `index.html`, `README.md`, `service-worker.js`, `vercel.json`, `css`, and `js`.
-4. Drag those items directly into the GitHub repository upload area.
-5. Commit the upload and allow Vercel to redeploy.
-6. On the first visit after deployment, hard-refresh once if an older service worker was previously installed.
+1. Extract this ZIP.
+2. Select everything inside it: `index.html`, `README.md`, `service-worker.js`, `vercel.json`, `css`, and `js`.
+3. Drag those items directly into the GitHub repository root and replace the old files.
+4. Commit and allow Vercel to redeploy.
+5. Hard-refresh once after deployment if an older cached build is still open.
 
 ## Structure
-- `index.html` — game page
-- `css/packforge.css` — all game styles
-- `js/packforge-core.js` — all game logic
-- `service-worker.js` — local shell caching; deletes older PackForge caches on activation
-- `vercel.json` — no-cache HTML/SW, long-lived versioned CSS/JS caching
+- `index.html` — page markup
+- `css/packforge.css` — all styles
+- `js/packforge-core.js` — all game logic, Season 2, and redesigned Admin Core
+- `service-worker.js` — shell caching and old-cache cleanup
+- `vercel.json` — no-cache HTML/SW and immutable versioned CSS/JS
+- `README.md` — deployment notes
 
-No third-party framework, CDN asset, gameplay API, WebSocket, or server heartbeat is added by this package. Gameplay remains local after the static files load.
+This is the same v4.0.1 game content as the standalone build, split back into the production file layout used by the earlier versions. No third-party framework, CDN dependency, gameplay API, WebSocket, or server heartbeat is added.
