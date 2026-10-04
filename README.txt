@@ -1,13 +1,21 @@
-PackForge v4.4.22 LOW-CDN / LOW-LAG build
+PackForge v4.4.22 SHOP FAST / 3-request Vercel build
 
-Runtime network layout on a cold first visit:
-1. index.html
-2. exact working primary CSS
-3. ONE streamed code-pack containing 13 execution chunks
-4. tiny service worker (registered after game startup)
+Cold browser visit requests:
+  1. index.html
+  2. css/pf-core.v4422.shopfast.3667b5d68ce5.css
+  3. assets/pf-code.v4422.shopfast.84291a1674a0.pack.js
 
-The code pack is one network response, but the browser executes it as 13 smaller strict chunks and yields an animation frame between chunks. This avoids the giant one-script initialization freeze without turning every chunk into a Vercel request.
+Refresh after first visit:
+  - index.html may revalidate (1 network request)
+  - hashed CSS and code pack are immutable/browser cached (0 network requests unless the build filename changes)
 
-All responses use aggressive one-year browser caching. CacheStorage + the service worker make normal repeat launches cache-first. No Functions, middleware, APIs, DB, analytics, remote images, or remote fonts.
+No service worker is installed by this build. It unregisters older PackForge service workers and clears only older PackForge CacheStorage entries so an old deployment cannot trap the site forever.
 
-IMPORTANT: This is intentionally aggressive caching. After deploying a NEW version, existing users may need one hard refresh (Ctrl+Shift+R) to force the new deployment.
+Shop optimization:
+  - pack cards are built once and kept in the DOM
+  - one delegated Buy listener instead of one handler per card every render
+  - entering Shop only updates price/availability text
+  - hidden Upgrades UI is not rebuilt while the Packs tab is active
+  - decorative Shop animations/transitions are disabled
+  - Shop pack-card shadows are simplified
+  - cards are prepared while the game shell is idle/hidden
