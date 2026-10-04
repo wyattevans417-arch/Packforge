@@ -1,21 +1,12 @@
-PackForge v4.4.22 SHOP FAST / 3-request Vercel build
+PackForge v4.4.22 MAX-OPT Vercel build
 
-Cold browser visit requests:
-  1. index.html
-  2. css/pf-core.v4422.shopfast.3667b5d68ce5.css
-  3. assets/pf-code.v4422.shopfast.84291a1674a0.pack.js
+Goal: identical gameplay/UI with minimum Vercel usage and Chromebook-friendly rendering.
 
-Refresh after first visit:
-  - index.html may revalidate (1 network request)
-  - hashed CSS and code pack are immutable/browser cached (0 network requests unless the build filename changes)
+Cold visit: exactly 3 game files: index.html + one CSS + one code-pack.
+Within the 1-hour browser cache window: refreshes can use 0 network requests.
+After that: normally only index.html revalidates; CSS/code-pack are immutable for 1 year.
+No APIs, functions, middleware, analytics, remote fonts, remote images, or runtime network calls.
 
-No service worker is installed by this build. It unregisters older PackForge service workers and clears only older PackForge CacheStorage entries so an old deployment cannot trap the site forever.
+Performance changes are rendering/packaging only: CSS/HTML are compacted, off-screen repeated cards use Chrome content-visibility, and the existing 13-stage engine loader remains intact so initialization yields between chunks. Shop-fast persistent DOM behavior is retained.
 
-Shop optimization:
-  - pack cards are built once and kept in the DOM
-  - one delegated Buy listener instead of one handler per card every render
-  - entering Shop only updates price/availability text
-  - hidden Upgrades UI is not rebuilt while the Packs tab is active
-  - decorative Shop animations/transitions are disabled
-  - Shop pack-card shadows are simplified
-  - cards are prepared while the game shell is idle/hidden
+After replacing an older deployment, use Ctrl+Shift+R once if an old cached build appears.
